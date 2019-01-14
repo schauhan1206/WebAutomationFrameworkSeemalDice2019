@@ -10,6 +10,8 @@ public class MainPage extends BaseUtil {
     @FindBy(xpath = "//p[@id='banner-headline']")
     public static WebElement needTechTalent;
 
+
+
     public void checkNeedTechTalent() {
         TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object() {
         }.getClass().getEnclosingMethod().getName()));
