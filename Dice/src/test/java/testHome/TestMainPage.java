@@ -24,16 +24,12 @@ public class TestMainPage extends MainPage {
         TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
         mainPage.checkNeedTechTalent();
     }
-    @test
+    @Test
     public void ClickSearchWebID() {
         driver.findElement(By.id("clearable_globalSearchInputField")).sendKeys("Find Blue");
      }
-     @test
+     @Test
     public void SearchStores() {
-         driver.findElement(By.className("redesign-header-nav-list-item")).sendKeys(Click);
+         driver.findElement(By.className("redesign-header-nav-list-item")).click();
      }
-
-
     }
-}
-}
