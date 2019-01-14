@@ -17,6 +17,7 @@ public class MainPage extends BaseUtil {
     }
     public void ClickSearchWebID() {
         driver.findElement(By.id("clearable_globalSearchInputField")).sendKeys("Find Blue");
+        System.out.println("Test is good");
 
 
     }
