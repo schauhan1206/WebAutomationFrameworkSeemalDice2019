@@ -37,21 +37,19 @@ import java.util.concurrent.TimeUnit;
 public class BaseUtil {
     public static WebDriver driver = null;
     public static Actions builder = null; //hoover over
-    public static WebDriverWait wait = null ;  //explicit wait
+    public static WebDriverWait wait = null ; //explicit wait
     @BeforeMethod
     public void setup() throws MalformedURLException {
-        //System.setProperty("webdriver.chrome.driver","../Generic/browserDriver/chromedriver");
-        //System.setProperty("webdriver.chrome.driver","C:\\Users\\seemal\\eclipse-workspace\\WebAutomationFrameworkSeemalDice2019\\Generic\\browserDriver\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
         //setUpBrowserStack();
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         builder = new Actions(driver);
-        wait = new WebDriverWait(driver,10);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.dice.com/");
+        wait = new WebDriverWait(driver,5);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.get("https://www.costco.com/");
         driver.manage().window().fullscreen();
     }
-
 
     public static ExtentReports extent;
     @BeforeSuite
@@ -101,14 +99,16 @@ public class BaseUtil {
         Date date = new Date();
         df.format(date);
 
-        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(file, new File(System.getProperty("user.dir")+ "/screenshots/"+screenshotName+" "+df.format(date)+".png"));
             System.out.println("Screenshot captured");
         } catch (Exception e) {
             System.out.println("Exception while taking screenshot "+e.getMessage());;
         }
+
     }
+
     @AfterSuite
     public void generateReport() {
         extent.close();
@@ -129,9 +129,9 @@ public class BaseUtil {
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("browser","chrome");
         cap.setCapability("browser_version","68.0");
-        cap.setCapability("os", "OS X");
-        cap.setCapability("os_version", "Sierra");
-        String browserStackUrl = "https://afiafarjana1:9Z5U2U9zmF6Uq6QUr9pi@hub-cloud.browserstack.com/wd/hub";
+        cap.setCapability("os", "Windows");
+        cap.setCapability("os_version", "xp10"); //have to fix it
+        String browserStackUrl = "https://afiafarjana1:9Z5U2U9zmF6Uq6QUr9pi@hub-cloud.browserstack.com/wd/hub"; //have to fix
         URL serverUrl = new URL(browserStackUrl);
         driver = new RemoteWebDriver(serverUrl,cap);
     }
@@ -160,4 +160,5 @@ public class BaseUtil {
         }
         return text;
     }
+
 }
