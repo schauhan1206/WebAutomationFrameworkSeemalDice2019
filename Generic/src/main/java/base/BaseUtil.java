@@ -40,7 +40,7 @@ public class BaseUtil {
     public static WebDriverWait wait = null ; //explicit wait
     @BeforeMethod
     public void setup() throws MalformedURLException {
-        //System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe"); **Activate if running on Windows
         //setUpBrowserStack();
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
@@ -92,9 +92,7 @@ public class BaseUtil {
         }
         driver.quit();
     }
-
     public static void captureScreenshot(WebDriver driver, String screenshotName){
-
         DateFormat df = new SimpleDateFormat("(MM.dd.yyyy-HH:mma)");
         Date date = new Date();
         df.format(date);
@@ -106,9 +104,7 @@ public class BaseUtil {
         } catch (Exception e) {
             System.out.println("Exception while taking screenshot "+e.getMessage());;
         }
-
     }
-
     @AfterSuite
     public void generateReport() {
         extent.close();
@@ -118,7 +114,6 @@ public class BaseUtil {
         calendar.setTimeInMillis(millis);
         return calendar.getTime();
     }
-
     public void waitToBeVisible(WebElement element){
         wait.until(ExpectedConditions.visibilityOf(element));
     }
@@ -160,5 +155,4 @@ public class BaseUtil {
         }
         return text;
     }
-
 }
