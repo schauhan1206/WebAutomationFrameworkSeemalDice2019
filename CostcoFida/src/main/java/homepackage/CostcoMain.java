@@ -42,8 +42,6 @@ public class CostcoMain extends BaseUtil {
 	public static WebElement All;
 	@FindBy(xpath="//a[@id='Home_Ancillary_2']") //18
 	public static WebElement Optical;
-	@FindBy(xpath="//a[@id='Home_Ancillary_0']") //19
-	public static WebElement Location; // Have to fix
 	@FindBy(xpath="//a[@id='Home_Ancillary_5']") //20
 	public static WebElement Photo;
 	@FindBy(id="footer-find-warehouse-block") //21
@@ -134,10 +132,6 @@ public class CostcoMain extends BaseUtil {
 		TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
 		Optical.click();
 	} //18
-	public void checkLocation(){
-		TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
-		Location.click();
-	} //19
 	public void checkPhoto(){
 		TestLogger.log(getClass().getSimpleName() + ": " + convertToString(new Object(){}.getClass().getEnclosingMethod().getName()));
 		Photo.click();
